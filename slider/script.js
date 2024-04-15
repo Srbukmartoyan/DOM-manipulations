@@ -7,18 +7,18 @@ const imgs = [
 const slider = getElement('.slider');
 const prev = getElement('.prev');
 const next = getElement('.next');
-const btns = getElement('.arrow', true)
+const btns = getElement('.arrow', true);
 let slides;
 let slidesLength;
 let direction;
+let isPrevButtonClicked = false;
 let isAutoSlideStart = true;
-let isBtns = false;
-
+let isBtns = true;
 let autoSlideTimer;
 
 function startAutoSlide() {
     autoSlideTimer = setInterval(() => {
-        next.click(); 
+        next.click();
     }, 2000);
 }
 
@@ -26,29 +26,44 @@ function stopAutoSlide() {
     clearInterval(autoSlideTimer);
 }
 
-function setSlides() {
-    imgs.forEach(src => {
-        const slide = document.createElement('div');
-        slide.classList.add('slide');
-    
-        const img = document.createElement('img');
-        img.classList.add('slide-img');
-        img.src = src;
+function createElementWithClass(elementType, className) {
+    const element = document.createElement(elementType);
+    if (className) {
+        element.classList.add(className);
+    }
+    return element;
+}
 
+function setSlides() {
+    const createSlide = src => {
+        const slide = createElementWithClass('div', 'slide');
+        const img = createElementWithClass('img', 'slide-img');
+        img.src = src;
         slide.appendChild(img);
         slider.appendChild(slide);
-    });
+    };
+
+    imgs.forEach(createSlide);
     slides = getElement('.slide', true);
     slidesLength = slides.length;
 }
 setSlides();
 
-
-function getElement (elem, all) {
+function getElement(elem, all) {
     if (all) {
         return document.querySelectorAll(elem);
     }
     return document.querySelector(elem);
+}
+
+function moveSlidesInstantly(distance) {
+    slider.style.transition = 'none';
+    slider.style.transform = `translate(${distance})`;
+}
+
+function moveSlidesWithTransition(distance) {
+    slider.style.transition = 'all 0.5s';
+    slider.style.transform = `translate(${distance})`;
 }
 
 next.addEventListener('click', () => {
@@ -56,38 +71,43 @@ next.addEventListener('click', () => {
         stopAutoSlide();
     }
     direction = -1;
-    slider.style.transform = 'translate(-25%)'; // 100 / 4 (number of images is 4) 
+    slider.style.transform = 'translate(-25%)';
 })
 
 prev.addEventListener('click', () => {
     if (isAutoSlideStart) {
         stopAutoSlide();
     }
-    direction = 1;
-    slider.prepend(slider.lastElementChild);
-    slider.style.transition = 'none';
-    slider.style.transform = 'translate(-25%)'; 
-    setTimeout(() => {
-        slider.style.transition = 'all 0.5s';
-        slider.style.transform = 'translate(0)';
-    })
-    if (isAutoSlideStart) {
-        startAutoSlide();
+    if (!isPrevButtonClicked) {
+        direction = 1;
+        slider.prepend(slider.lastElementChild);
+        moveSlidesInstantly('-25%');
+        setTimeout(() => {
+            moveSlidesWithTransition('0');
+        })
+        if (isAutoSlideStart) {
+            setTimeout(() => {
+                startAutoSlide();
+            }, 500);
+        }
+        isPrevButtonClicked = true;
+        setTimeout(() => {
+            isPrevButtonClicked = false;
+        }, 500);
     }
 })
 
 slider.addEventListener('transitionend', () => {
     if (direction == -1) {
         slider.appendChild(slider.firstElementChild);
-        slider.style.transition = 'none'; // want to bring back to the first slide wifthout transition effect
-        slider.style.transform = 'translate(0)';
+        moveSlidesInstantly('0');
         setTimeout(() => {
             slider.style.transition = 'all 0.5s';
-        })
+        });
         if (isAutoSlideStart) {
             startAutoSlide();
         }
-    } 
+    }
 })
 
 if (isAutoSlideStart) {
