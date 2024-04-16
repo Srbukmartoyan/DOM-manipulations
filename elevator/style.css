@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+.building {
+    position: relative;
+    margin: auto;
+    height: 95vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    border: 1px solid;
+}
+
+.lift-container {
+    display: flex;
+    gap: 10px;
+    transition: 0.5s;
+    z-index: 1;
+    background-color: rgba(134, 90, 90, 0.507);
+    border: 0.2vh solid;
+    position: absolute;
+}
+
+.lift {
+    width: 100px;
+    display: flex;
+    border: 1px solid white;
+}
+
+.doors {
+    width: 100%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+.door {
+    width: 50%;
+    transition: 2s;
+}
+
+.door.right {
+    background-color: rgb(75, 46, 32);
+}
+
+.door.left {
+    background-color: rgb(180, 112, 79);
+}
+
+.screen-container {
+    display: flex;
+}
+
+.screen {
+    border: 1px solid brown;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+}
+
+.screen-btn {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: brown;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.door-contols {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.control {
+    display: block;
+    width: 40px;
+    border: none;
+    background-color: rgba(134, 90, 90, 0.507);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.floors {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: end;
+    font-weight: bold;
+}
+
+.floor {
+    width: 100%;
+    border: 1px solid red;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.count-input {
+    width: 70px;
+    border: 1px solid;
+    outline: none;
+    background: transparent;
+}
+
+.count-input::placeholder {
+    font-size: 12px;
+    color: black
+}
+
+
+.count-btn {
+    background: transparent;
+    border: 1px solid;
+    height: 20px;
+}
