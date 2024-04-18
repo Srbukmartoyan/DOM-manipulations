@@ -1,0 +1,67 @@
+.app-container {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px
+}
+
+.logo-container {
+    display: flex;
+    gap: 10px;
+}
+
+.logo-count-container {
+    display: flex;
+    gap: 10px
+}
+
+.logo-count {
+    padding: 3px 20px;
+    background-color: rgb(20, 101, 101);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.count {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.refresh-items {
+    background-color: rgb(23, 169, 23);
+}
+
+.restore {
+    background-color: rgb(71, 156, 185);
+}
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.number {
+    background-color: rgb(0, 102, 255);
+}
+
+.add {
+    background-color: rgb(174, 169, 169);
+}
+
+.decrese{
+    background-color: rgb(37, 156, 156);
+}
+
+.remove {
+    background-color: rgb(184, 17, 17);
+}
