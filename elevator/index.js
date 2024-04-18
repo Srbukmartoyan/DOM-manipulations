@@ -142,7 +142,6 @@ function cycleMove(floor, index, doorTransition, totalTransitionTime, arr) {
 
 function cycleMoveSetup(arr) {
     console.log(arr);
-    console.log(base);
     changeEventListeners(true);
     inprocess = false;
     let currentTransitionTime = 0;
@@ -169,8 +168,9 @@ function changeEventListeners(isAttach) {
 
 function sortBasedOnDistance(arr) {
     arr.sort((a, b) => Math.abs(a - base) - Math.abs(b - base));
-    base = arr[arr.length - 1];
-    return arr;
+    let uniqueArr = [...new Set(arr)];
+    base = uniqueArr[uniqueArr.length - 1];
+    return uniqueArr;
 }
 
 function startAgain() {
@@ -221,5 +221,3 @@ manyBtn.addEventListener('click', () => {
         startLifeCycle();
     }
 })
-
-
