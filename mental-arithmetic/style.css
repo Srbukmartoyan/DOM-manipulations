@@ -1,0 +1,30 @@
+.game-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.digits-container {
+    margin-top: 20px;
+}
+
+.passive {
+    display: none;
+}
+
+p {
+    font-size: 32px;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.check {
+    margin: 10px 0
+}

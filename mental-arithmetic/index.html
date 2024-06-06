@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h2>Mental Arithmetic</h2>
+        <form action="">
+            <select name="speed" id="speed">
+                <option value="0.5">0.5sec</option>
+                <option value="1">1sec</option>
+                <option value="1.5">1.5sec</option>
+            </select>
+            <select name="level" id="level" class="level">
+                <option value="easy">easy</option>
+                <option value="medium">medium</option>
+                <option value="hard">hard</option>
+            </select>
+            <button type="submit" class="start">start</button>
+        </form>
+        <digits class="digits-container">
+
+        </digits>
+        <input type="number" class="passive result" placeholder="input a sum">
+        <button class="passive check">check answer</button>
+        <button class="start-again passive">start again</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

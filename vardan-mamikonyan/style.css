@@ -1,0 +1,48 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px
+}
+
+.fields {
+    display: grid;
+}
+
+.field {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.character {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vardan_Mamikonyan.jpg/220px-Vardan_Mamikonyan.jpg');
+    z-index: 1;
+}
+
+.elephant { 
+    background-image: url('https://media.istockphoto.com/id/1401523594/vector/cute-elephant.jpg?s=612x612&w=0&k=20&c=ylSH7vxtEstE9tIXAJPxuwZt9dEyOV-9el4m2FM_5NY=');
+}
+
+.footer-container {
+    display: flex;
+    gap: 20px
+}
+
+.eaten, .timer {
+    padding: 20px;
+    background-color: antiquewhite;
+    border: 1px solid black;
+}
+
